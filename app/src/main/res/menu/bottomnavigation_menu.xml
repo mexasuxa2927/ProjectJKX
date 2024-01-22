@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home" android:id="@+id/home_nave_id" android:icon="@drawable/home_186"/>
+    <item android:title="Coming soon" android:id="@+id/come_nave_id" android:icon="@drawable/videos_26"/>
+    <item android:title="Search" android:id="@+id/search_nave_id" android:icon="@drawable/search_152"/>
+    <item android:title="Download" android:id="@+id/down_nave_id" android:icon="@drawable/download_379"/>
+
+</menu>

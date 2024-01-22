@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.sreens.HomePage">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:fillViewport="true"
+        >
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:id="@+id/MainContainer"
+           >
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:id="@+id/constraintLayout"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               app:layout_constraintBottom_toTopOf="@id/guideline1"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent">
+
+               <androidx.viewpager.widget.ViewPager
+                   android:id="@+id/viewpagerReleases"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="80dp"
+                   android:background="@drawable/gradient_top_black"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"></LinearLayout>
+
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+           <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+               android:layout_width="wrap_content"
+               android:id="@+id/dotindicator"
+               android:layout_marginBottom="10dp"
+               android:layout_height="wrap_content"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintRight_toRightOf="parent"
+               app:layout_constraintBottom_toTopOf="@id/guideline1"
+               app:dotsSize="12dp"
+               app:dotsColor="@color/white"
+               app:selectedDotColor="#F60505"
+               app:dotsCornerRadius="6dp"
+               app:dotsSpacing="4dp"
+               app:dotsWidthFactor="2.5"
+               app:progressMode="true"
+               >
+           </com.tbuonomo.viewpagerdotsindicator.DotsIndicator>
+
+
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/guideline1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               app:layout_constraintGuide_begin="450dp" />
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginBottom="30dp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+               <TextView
+                   android:id="@+id/nameTypeTopFilms"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:text="Top Films"
+                   android:textColor="@color/white"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   >
+               </TextView>
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerTopfilms"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   >
+               </androidx.recyclerview.widget.RecyclerView>
+
+               <TextView
+                   android:id="@+id/nametoptvshow"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:text="Top TV_Show"
+                   android:textColor="@color/white"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   >
+               </TextView>
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerToptvShows"
+                   android:layout_width="match_parent"
+                   android:layout_height="210dp"
+                   android:layout_marginTop="10dp"
+                   >
+               </androidx.recyclerview.widget.RecyclerView>
+
+               <TextView
+                   android:id="@+id/nameAnimation"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:text="Kids_Animation_Theme"
+                   android:textColor="@color/white"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   >
+               </TextView>
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerTopAnimation"
+                   android:layout_width="match_parent"
+                   android:layout_height="210dp"
+                   android:layout_marginTop="10dp"
+                   >
+               </androidx.recyclerview.widget.RecyclerView>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:text="Vampire_theme"
+                   android:textColor="@color/white"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   >
+               </TextView>
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerVampire_theme"
+                   android:layout_width="match_parent"
+                   android:layout_height="210dp"
+                   android:layout_marginTop="10dp"
+                   >
+               </androidx.recyclerview.widget.RecyclerView>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:text="Comics_theme"
+                   android:textColor="@color/white"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   >
+               </TextView>
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerCOMICS_THEME"
+                   android:layout_width="match_parent"
+                   android:layout_height="210dp"
+                   android:layout_marginTop="10dp"
+                   >
+               </androidx.recyclerview.widget.RecyclerView>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:text="Family_theme"
+                   android:textColor="@color/white"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   >
+               </TextView>
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerFAMILY"
+                   android:layout_width="match_parent"
+                   android:layout_height="210dp"
+                   android:layout_marginTop="10dp"
+                   >
+               </androidx.recyclerview.widget.RecyclerView>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:text="Zombie_theme"
+                   android:textColor="@color/white"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   >
+               </TextView>
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recyclerZOMBIE_THEME"
+                   android:layout_width="match_parent"
+                   android:layout_height="210dp"
+                   android:layout_marginTop="10dp"
+                   >
+               </androidx.recyclerview.widget.RecyclerView>
+
+
+           </LinearLayout>
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
