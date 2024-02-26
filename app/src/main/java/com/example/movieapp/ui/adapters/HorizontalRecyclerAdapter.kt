@@ -1,5 +1,7 @@
 package com.example.movieapp.ui.adapters
 
+import android.content.res.Resources
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +12,9 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.data.collectionsmovie.CollectionsMovieItem
-import com.example.movieapp.databinding.MoviePosterItemForRecyclerviewBinding
 import com.example.movieapp.utils.RecyclerViewItemClickListner
 
 
@@ -54,5 +54,7 @@ class HorizontalRecyclerAdapter(val listner: RecyclerViewItemClickListner):ListA
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.onBindItem(getItem(position))
     }
+
+
 
 }

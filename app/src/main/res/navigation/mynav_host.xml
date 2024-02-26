@@ -24,13 +24,29 @@
         <action
             android:id="@+id/action_mainScreen_to_itemPage"
             app:destination="@id/itemPage"
-            app:enterAnim="@android:anim/fade_out"
-            app:popUpTo="@id/itemPage"
-            app:popUpToInclusive="true" />
+            app:enterAnim="@anim/slide_in_animation"
+            app:exitAnim="@anim/fade_out_animation"
+            app:popEnterAnim="@anim/fade_in_animation"
+            app:popExitAnim="@anim/slide_out_animation"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/itemPage"
         android:name="com.example.movieapp.ui.sreens.ItemPage"
         android:label="fragment_item_page"
-        tools:layout="@layout/fragment_item_page" />
+        tools:layout="@layout/fragment_item_page" >
+        <action
+            android:id="@+id/action_itemPage_to_actorPage"
+            app:destination="@id/actorPage"
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/slide_in_animation"
+            app:exitAnim="@anim/fade_out_animation"
+            app:popEnterAnim="@anim/fade_in_animation"
+            app:popExitAnim="@anim/slide_out_animation" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorPage"
+        android:name="com.example.movieapp.ui.sreens.ActorPage"
+        android:label="fragment_actor_page"
+        tools:layout="@layout/fragment_actor_page" />
 </navigation>

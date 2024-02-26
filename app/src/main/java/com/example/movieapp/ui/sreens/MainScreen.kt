@@ -33,8 +33,6 @@ class MainScreen : Fragment() {
         if(adapter==null){
             adapter  = NavigationViewPagerAdapter(childFragmentManager)
         }
-
-        Log.d("@@@@", "onCreate: ")
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -48,13 +46,11 @@ class MainScreen : Fragment() {
         // Inflate the layout for this fragment
 
 
-        Log.d("@@@@", "onCreateView: ")
+
 
         return if (savedViewInstance != null) {
-            Log.d("#####", "onCreateView:  if")
             savedViewInstance
         } else {
-            Log.d("#####", "onCreateView:  else ")
             binding  = FragmentMainScreenBinding.inflate(layoutInflater,container,false)
             setViewPager()
             setBottomNavigation()
@@ -67,40 +63,6 @@ class MainScreen : Fragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d("@@@@", "onViewCreated: ")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("@@@@", "onStart: ")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("@@@@", "onPause: ")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("@@@@", "onResume: ")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("@@@@", "onDestroy: ")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.d("@@@@", "onDestroyView: ")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("@@@@", "onStop: ")
-    }
 
     private fun setBottomNavigation() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {

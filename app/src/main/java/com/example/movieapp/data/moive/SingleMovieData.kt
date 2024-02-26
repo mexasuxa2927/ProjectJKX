@@ -1,9 +1,11 @@
 package com.example.movieapp.data.moive
 
+import java.io.Serializable
+
 data class SingleMovieData(
     val completed: Boolean,
     val countries: List<Country>,
-    val coverUrl: Any,
+    val coverUrl: String,
     val description: String,
     val editorAnnotation: Any,
     val endYear: Any,
@@ -13,24 +15,24 @@ data class SingleMovieData(
     val hasImax: Boolean,
     val imdbId: String,
     val isTicketsAvailable: Boolean,
-    val kinopoiskHDId: Any,
+    val kinopoiskHDId: String,
     val kinopoiskId: Int,
     val lastSync: String,
-    val logoUrl: Any,
+    val logoUrl: String,
     val nameEn: Any,
     val nameOriginal: String,
     val nameRu: String,
     val posterUrl: String,
     val posterUrlPreview: String,
     val productionStatus: Any,
-    val ratingAgeLimits: Any,
+    val ratingAgeLimits: String,
     val ratingAwait: Int,
     val ratingAwaitCount: Int,
-    val ratingFilmCritics: Int,
+    val ratingFilmCritics: Double,
     val ratingFilmCriticsVoteCount: Int,
     val ratingGoodReview: Int,
     val ratingGoodReviewVoteCount: Int,
-    val ratingImdb: Int,
+    val ratingImdb: Double,
     val ratingImdbVoteCount: Int,
     val ratingKinopoisk: Double,
     val ratingKinopoiskVoteCount: Int,
@@ -39,11 +41,11 @@ data class SingleMovieData(
     val ratingRfCriticsVoteCount: Int,
     val reviewsCount: Int,
     val serial: Boolean,
-    val shortDescription: Any,
+    val shortDescription: String,
     val shortFilm: Boolean,
-    val slogan: Any,
+    val slogan: String,
     val startYear: Any,
     val type: String,
     val webUrl: String,
     val year: Int
-)
+):Serializable
