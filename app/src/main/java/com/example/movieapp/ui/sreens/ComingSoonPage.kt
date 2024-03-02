@@ -1,11 +1,24 @@
 package com.example.movieapp.ui.sreens
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.rxjava2.mapAsync
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movieapp.R
+import com.example.movieapp.databinding.FragmentActorPageBinding
+import com.example.movieapp.databinding.FragmentComingSoonPageBinding
+import com.example.movieapp.ui.adapters.ComingSoonPageAdapter
+import com.example.movieapp.viewmodul.MyViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,12 +43,28 @@ class ComingSoonPage : Fragment() {
         }
     }
 
+    private lateinit var binding: FragmentComingSoonPageBinding
+    private val viewmodel :MyViewModel by hiltNavGraphViewModels(R.id.mynav_host)
+    @SuppressLint("CheckResult")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        binding  = FragmentComingSoonPageBinding.inflate(inflater,container,false)
+        val adapter  = ComingSoonPageAdapter()
+
+        binding.recyclerview.adapter = adapter
+        binding.recyclerview.layoutManager =GridLayoutManager(requireContext(),3,GridLayoutManager.VERTICAL,false)
+        lifecycleScope.launch{
+            viewmodel.fetchComingSoon().collectLatest {
+
+
+                adapter.submitData(it)
+            }
+        }
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_coming_soon_page, container, false)
+        return binding.root
     }
 
     companion object {

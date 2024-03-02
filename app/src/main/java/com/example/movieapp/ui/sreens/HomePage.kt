@@ -58,15 +58,14 @@ class HomePage : Fragment(),RecyclerViewItemClickListner {
         // Inflate the layout for this fragment
         binding  = FragmentHomePageBinding.inflate(layoutInflater,container,false)
 
-
-        setDataViewPager()
-        setdataRecyclerViewTopFilms()
-        setdataRecyclerViewTopTvShow()
-        setdataRecyclerViewTopKind()
-        setdataRecyclerViewVampireTheme()
-        setdataRecyclerViewFamilyTheme()
-        setdataRecyclerViewZombieTheme()
-        setdataRecyclerViewComicsTheme()
+            setDataViewPager()
+            setdataRecyclerViewTopFilms()
+            setdataRecyclerViewTopTvShow()
+            setdataRecyclerViewTopKind()
+            setdataRecyclerViewVampireTheme()
+            setdataRecyclerViewFamilyTheme()
+            setdataRecyclerViewZombieTheme()
+            setdataRecyclerViewComicsTheme()
 
             binding?.root
 

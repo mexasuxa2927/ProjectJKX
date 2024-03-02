@@ -11,6 +11,7 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+
 interface ApiService {
     //releasesdata
     @GET("api/v2.1/films/releases")
@@ -33,8 +34,14 @@ interface ApiService {
     @Headers("X-API-KEY:781988e7-aca4-4dc0-b60f-1f4a1dcdc31a")
     suspend fun getFilmActorsByFilmId(@Query("filmId") filmId: Int):Response<Actors>
 
-    @GET("/api/v1/staff/{id}")
+//    @GET("/api/v1/staff/{id}")
+//    @Headers("X-API-KEY:781988e7-aca4-4dc0-b60f-1f4a1dcdc31a")
+//    suspend fun getActors(@Path("id")id:Int):Response<ActorByIdRespons>
+
+
+    @GET("api/v2.1/films/releases")
     @Headers("X-API-KEY:781988e7-aca4-4dc0-b60f-1f4a1dcdc31a")
-    suspend fun getActors(@Path("id")id:Int):Response<ActorByIdRespons>
+    suspend fun getComingsoon(@Query("year")year:Int,@Query("month")month:String,@Query("page")page: Int):Response<ReleasesResponse>
+
 
 }

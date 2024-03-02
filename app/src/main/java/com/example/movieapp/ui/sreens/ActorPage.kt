@@ -53,13 +53,13 @@ class ActorPage : Fragment() {
     private fun loadData() {
         viewmodel.getActorDataById().observe(viewLifecycleOwner){
             it.onSuccess {
-                Log.d("@@@@", "loadData: ")
+
                 Glide.with(requireContext()).load(it.posterUrl).into(binding!!.actorImage)
                 binding!!.actorName.text  = it.nameRu
                 binding!!.professions.text  = it.profession
                 binding!!.actorFacts.text  = it.facts.toString()
             }.onFailure {
-                Log.d("@@@@", "loadData:error")
+
             }
         }
     }

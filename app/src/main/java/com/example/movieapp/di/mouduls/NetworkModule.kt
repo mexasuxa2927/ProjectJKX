@@ -1,10 +1,13 @@
 package com.example.movieapp.di.mouduls
 
+import com.airbnb.lottie.BuildConfig
 import com.example.movieapp.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -18,6 +21,7 @@ class NetworkModule {
     fun provideGsonConverter(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
+
 
     @Provides
     @Singleton

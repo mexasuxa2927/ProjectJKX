@@ -80,11 +80,9 @@ class ItemPage : Fragment(),RecyclerViewItemClickListner{
                 it.genres.forEach{
                     binding!!.genres.text  = binding!!.genres.text.toString() + " "  + it.genre
                 }
-                binding!!.imdbReyting.text  = binding!!.imdbReyting.text.toString() +  it.ratingImdb.toString()
-                binding!!.kinopoistkReyting.text  = binding!!.kinopoistkReyting.text.toString()+it.ratingKinopoisk
+                binding!!.imdbReyting.text  = "IMDB :"+it.ratingImdb
+                binding!!.kinopoistkReyting.text  = "Kino poisk :"+it.ratingKinopoisk
                 binding!!.discription.text    =  it.description
-
-
 
             }.onFailure {
 
@@ -131,7 +129,7 @@ class ItemPage : Fragment(),RecyclerViewItemClickListner{
     }
 
     override fun itemClickListner(dataId: Int) {
-        viewModel.fetchActorDataById(id)
-        findNavController().navigate(R.id.action_itemPage_to_actorPage)
+//        viewModel.fetchActorDataById(id)
+//        findNavController().navigate(R.id.action_itemPage_to_actorPage)
     }
 }

@@ -4,6 +4,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.movieapp.data.actor_respons.ActorByIdRespons
 import com.example.movieapp.data.collectionsmovie.CollectionsMovieItem
 import com.example.movieapp.data.moive.SingleMovieData
@@ -11,12 +15,14 @@ import com.example.movieapp.data.movie_creaters.Actors
 import com.example.movieapp.data.releases.Release
 import com.example.movieapp.repository.Repository
 import com.example.movieapp.utils.FilmsTypes
+import com.example.movieapp.utils.paging3.ComingSoonPagingSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import java.time.Year
 import javax.inject.Inject
 
 @HiltViewModel
@@ -34,21 +40,27 @@ class MyViewModel @Inject constructor(private val repository: Repository): ViewM
     private val collectionActorData =MutableLiveData<Result<ActorByIdRespons>>()
 
 
+
+
+
     init {
-
-
-
-        fetchFirstPageBackground()
+        fetchFirstPageBackground(repository.getShared()!!.getString("month","").toString(),repository.getShared()!!.getInt("year",1999))
     }
+
+    fun getYear():Int{
+        return repository.getShared()!!.getInt("year",1999)
+    }
+    fun getMonth(): String? {
+        return repository.getShared()!!.getString("month","")
+    }
+
     fun getFirstPageBackground(): MutableLiveData<Result<List<Release>>> {
         return releasesList
     }
 
-    fun fetchFirstPageBackground(){
+    fun fetchFirstPageBackground(month:String,year: Int){
         viewModelScope.launch {
-
-            
-            flow{emit(repository.getNetworkApi().getLastReleaseMovie(year = 2023, month = "DECEMBER"))}.catch {
+            flow{emit(repository.getNetworkApi().getLastReleaseMovie(year = year, month = month))}.catch {
                 releasesList.postValue(Result.failure(it))
             }.collect{
                 if(it.isSuccessful){
@@ -232,19 +244,31 @@ class MyViewModel @Inject constructor(private val repository: Repository): ViewM
     fun getActorDataById(): MutableLiveData<Result<ActorByIdRespons>> {
         return collectionActorData
     }
-    fun fetchActorDataById(id: Int){
-        viewModelScope.launch (Dispatchers.IO){
-            flow {emit(repository.getNetworkApi().getActors(id))  }.catch {
-                collectionActorData.postValue(Result.failure(it))
-            }.collect{
-                if (it.isSuccessful){
-                    collectionActorData.postValue(Result.success(it.body()!!))
-                }else{
-                    collectionActorData.postValue(Result.failure(Throwable()))
-                }
-            }
-        }
+//    fun fetchActorDataById(id: Int){
+//        viewModelScope.launch (Dispatchers.IO){
+//            flow {emit(repository.getNetworkApi().getActors(id))  }.catch {
+//                collectionActorData.postValue(Result.failure(it))
+//            }.collect{
+//                Log.d("@@@@", "fetchActorDataById: $it")
+//                if (it.isSuccessful){
+//                    collectionActorData.postValue(Result.success(it.body()!!))
+//                }else{
+//                    Log.d("@@@@", "loadData:error ${it.code()}")
+//                    collectionActorData.postValue(Result.failure(Throwable()))
+//                }
+//            }
+//        }
+//    }
+
+    fun fetchComingSoon(): Flow<PagingData<Release>> {
+       return Pager(PagingConfig(pageSize = 20)) {
+            // Here you would replace this placeholder with your actual data source
+            // Replace 'myApi' with your actual Retrofit or other networking client.
+            // `ApiService` is a fictional name for the service which fetches data.
+            ComingSoonPagingSource(repository.getNetworkApi(),repository.getShared().)
+        }.flow.cachedIn(viewModelScope)
     }
+
 
 
 

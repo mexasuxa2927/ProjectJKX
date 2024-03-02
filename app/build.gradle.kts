@@ -98,6 +98,10 @@ dependencies {
     //recycleranimation
     implementation ("jp.wasabeef:recyclerview-animators:4.0.2")
 
+     //    interceptor
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.7.2")
+
+    implementation ("androidx.activity:activity-ktx:1.7.1")
 
 
 
